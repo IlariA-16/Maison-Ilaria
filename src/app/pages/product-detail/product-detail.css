@@ -144,3 +144,44 @@
     height: 50vh;
   }
 }
+/* --- NOTIFICA INTEGRATA CENTRATA D'ALTA MODA --- */
+.toast-notification {
+  position: fixed;
+  bottom: -100px; /* Nascosta inizialmente sotto lo schermo */
+  left: 50%;
+  transform: translateX(-50%); /* Centra perfettamente la barra in orizzontale */
+  background-color: #1a1a1a;
+  color: #faf9f6;
+  padding: 1.2rem 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  border: 1px solid #e5e0d8;
+  z-index: 9999;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  opacity: 0;
+  pointer-events: none;
+  white-space: nowrap; /* Impedisce al testo di andare a capo */
+}
+
+/* Questa si attiva quando premi il tasto nero e showNotification diventa true */
+.toast-notification.show {
+  bottom: 4rem; /* La fa salire elegantemente in mezzo allo schermo */
+  opacity: 1;
+}
+
+.toast-icon {
+  font-weight: bold;
+  color: #d2cbc4; /* Colore corda/oro minimale */
+}
+
+.toast-notification p {
+  margin: 0;
+  font-weight: 400;
+}
+

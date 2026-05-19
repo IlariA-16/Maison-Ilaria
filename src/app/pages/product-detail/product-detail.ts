@@ -16,6 +16,10 @@ export class ProductDetail implements OnInit {
   selectedSize: string = ''; // Memorizza la taglia scelta dall'utente
   sizes: string[] = ['XS', 'S', 'M', 'L', 'XL']; // Taglie disponibili
 
+  // 1. Aggiungiamo le due variabili per controllare la notifica d'alta moda
+  showNotification: boolean = false;
+  notificationMessage: string = '';
+
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
@@ -37,13 +41,27 @@ export class ProductDetail implements OnInit {
 
   addToCart(): void {
     if (this.product) {
-      if (!this.selectedSize) {
+      // 2. Se è un vestito (NON accessori) e la taglia manca, blocca l'acquisto
+      if (this.product.category !== 'Accessori' && !this.selectedSize) {
         alert('Per favore, seleziona una taglia prima di aggiungere al carrello.');
         return;
       }
-      // Aggiungiamo il prodotto usando il servizio del carrello
+      
+      // 3. Definiamo il testo in base al tipo di articolo
+      const dettagliotaglia = this.product.category === 'Accessori' ? 'Taglia Unica' : `Taglia ${this.selectedSize}`;
+      
+      // Aggiungiamo il prodotto nel carrello
       this.cartService.addToCart(this.product);
-      alert(`${this.product.name} (Taglia ${this.selectedSize}) aggiunto al carrello!`);
+      
+      // 4. Sostituiamo il vecchio alert con la comparsa della notifica personalizzata
+      this.notificationMessage = `${this.product.name} (${dettagliotaglia}) aggiunto al carrello.`;
+      this.showNotification = true;
+
+      // 5. Facciamo sparire la notifica automaticamente dopo 3 secondi
+      setTimeout(() => {
+        this.showNotification = false;
+      }, 3000);
     }
   }
 }
+  

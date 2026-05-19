@@ -50,3 +50,8 @@
     <a routerLink="/prodotti" class="btn-back">Torna alla collezione</a>
   </div>
 </ng-template>
+
+<div class="toast-notification" [class.show]="showNotification">
+  <span class="toast-icon">✓</span>
+  <p>{{ notificationMessage }}</p>
+</div>
