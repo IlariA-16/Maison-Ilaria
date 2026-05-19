@@ -1,0 +1,51 @@
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 3rem;
+  background-color: #ffffff;
+  border-bottom: 1px solid #eaeaea;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+.logo a {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: #000000;
+  text-decoration: none;
+}
+
+.nav-links a {
+  margin: 0 1.5rem;
+  text-decoration: none;
+  color: #666666;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover, .nav-links a.active {
+  color: #000000;
+  font-weight: 500;
+}
+
+.cart-icon a {
+  text-decoration: none;
+  color: #000000;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+}
+
+.badge {
+  background-color: #000000;
+  color: #ffffff;
+  border-radius: 50%;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.75rem;
+  margin-left: 0.5rem;
+}
