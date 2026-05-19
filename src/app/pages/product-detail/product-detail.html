@@ -1,1 +1,52 @@
-<p>product-detail works!</p>
+<div class="detail-container" *ngIf="product; else notFound">
+  <!-- Colonna Sinistra: Immagine Reale Locale -->
+  <div class="image-column">
+    <img [src]="product.image" [alt]="product.name">
+  </div>
+
+  <!-- Colonna Destra: Informazioni -->
+  <div class="info-column">
+    <span class="category-tag">{{ product.category }}</span>
+    <h1 class="product-title">{{ product.name }}</h1>
+    <p class="product-price">{{ product.price | currency:'EUR' }}</p>
+    
+    <hr class="divider">
+    
+    <p class="product-description">{{ product.description }}</p>
+    
+    <!-- Selezione Taglia (Mostrata solo per vestiti, esclusi gli accessori) -->
+    <div class="size-section" *ngIf="product.category !== 'Accessori'">
+      <h3>Seleziona Taglia</h3>
+      <div class="sizes-grid">
+        <button 
+          *ngFor="let size of sizes" 
+          (click)="selectSize(size)"
+          [class.active]="selectedSize === size"
+          class="size-btn">
+          {{ size }}
+        </button>
+      </div>
+    </div>
+
+    <!-- Se invece è un accessorio, mostriamo un testo informativo fisso -->
+    <div class="size-section" *ngIf="product.category === 'Accessori'">
+      <h3>Taglia</h3>
+      <p style="font-size: 0.9rem; color: #555555; margin-bottom: 2rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 500;">Taglia Unica (One Size)</p>
+    </div>
+
+    <!-- Bottone di Acquisto -->
+    <button (click)="addToCart()" class="btn-add-cart">
+      Aggiungi al Carrello
+    </button>
+    
+    <a routerLink="/prodotti" class="btn-back">← Torna alla collezione</a>
+  </div>
+</div>
+
+<!-- Schermata di errore se il prodotto non esiste -->
+<ng-template #notFound>
+  <div class="error-container">
+    <h2>Capo d'abbigliamento non trovato</h2>
+    <a routerLink="/prodotti" class="btn-back">Torna alla collezione</a>
+  </div>
+</ng-template>

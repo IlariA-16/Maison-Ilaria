@@ -1,1 +1,27 @@
-<p>product-list works!</p>
+<div class="catalog-container">
+  <header class="catalog-header">
+    <span>Maison Ilaria Archive</span>
+    <h2>La Collezione Permanente</h2>
+    <p>Linee essenziali, geometrie pure e textures naturali.</p>
+  </header>
+  
+  <!-- Griglia dei Prodotti della Maison -->
+  <div class="products-grid">
+    <div *ngFor="let product of products" class="product-card">
+      <div class="image-wrapper">
+        
+        <!-- Tag immagine dinamico che legge i percorsi locali dal product.ts -->
+        <img [src]="product.image" [alt]="product.name">
+        
+        <div class="card-overlay">
+          <a [routerLink]="['/prodotto', product.id]" class="btn-view">Vedi Dettaglio</a>
+        </div>
+      </div>
+      <div class="product-info">
+        <span class="category">{{ product.category }}</span>
+        <h3>{{ product.name }}</h3>
+        <p class="price">{{ product.price | currency:'EUR' }}</p>
+      </div>
+    </div>
+  </div>
+</div>
