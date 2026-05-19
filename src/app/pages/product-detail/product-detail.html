@@ -15,7 +15,7 @@
     <p class="product-description">{{ product.description }}</p>
     
     <!-- Selezione Taglia (Mostrata solo per vestiti, esclusi gli accessori) -->
-    <div class="size-section" *ngIf="product.category !== 'Accessori'">
+    <div class="size-section" *ngIf="product.category !== 'Accessori' && product.stock > 0">
       <h3>Seleziona Taglia</h3>
       <div class="sizes-grid">
         <button 
@@ -28,19 +28,34 @@
       </div>
     </div>
 
-    <!-- Se invece è un accessorio, mostriamo un testo informativo fisso -->
-    <div class="size-section" *ngIf="product.category === 'Accessori'">
+    <!-- Se invece è un accessorio disponibile, mostriamo la taglia unica -->
+    <div class="size-section" *ngIf="product.category === 'Accessori' && product.stock > 0">
       <h3>Taglia</h3>
       <p style="font-size: 0.9rem; color: #555555; margin-bottom: 2rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 500;">Taglia Unica (One Size)</p>
     </div>
 
-    <!-- Bottone di Acquisto (CORRETTO: Si blocca e cambia testo se lo stock è zero) -->
-    <button 
-      (click)="addToCart()" 
-      class="btn-add-cart" 
-      [disabled]="product.stock === 0">
-      {{ product.stock > 0 ? 'Aggiungi al Carrello' : 'Prodotto Esaurito' }}
+    <!-- SE IL PRODOTTO È DISPONIBILE: Bottone di Acquisto Standard -->
+    <button (click)="addToCart()" class="btn-add-cart" *ngIf="product.stock > 0">
+      Aggiungi al Carrello
     </button>
+    
+    <!-- SE IL PRODOTTO È ESAURITO: Form di iscrizione all'avviso di stock -->
+    <div class="stock-alert-container" *ngIf="product.stock === 0">
+      <p class="stock-alert-title">Questo capo è attualmente esaurito</p>
+      <p class="stock-alert-desc">Lascia il tuo indirizzo email per ricevere una notifica esclusiva non appena tornerà disponibile in Atelier.</p>
+      
+      <form (ngSubmit)="subscribeToStockAlert()" class="stock-alert-form">
+        <input 
+          type="email" 
+          [(ngModel)]="notifyEmail" 
+          name="notifyEmail" 
+          placeholder="INSERISCI LA TUA EMAIL" 
+          required>
+        <button type="submit" class="btn-alert-submit" [disabled]="!isNotifyEmailValid()">
+          Avvisami
+        </button>
+      </form>
+    </div>
     
     <a routerLink="/prodotti" class="btn-back">← Torna alla collezione</a>
   </div>

@@ -116,6 +116,14 @@
   color: #1a1a1a;
 }
 
+.btn-add-cart:disabled {
+  background-color: #e5e0d8;
+  border-color: #e5e0d8;
+  color: #888888;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
 .btn-back {
   font-size: 0.8rem;
   color: #666666;
@@ -144,6 +152,7 @@
     height: 50vh;
   }
 }
+
 /* --- NOTIFICA INTEGRATA CENTRATA D'ALTA MODA --- */
 .toast-notification {
   position: fixed;
@@ -184,12 +193,77 @@
   margin: 0;
   font-weight: 400;
 }
-.btn-add-cart:disabled {
-  background-color: #e5e0d8;
-  border-color: #e5e0d8;
-  color: #888888;
-  cursor: not-allowed;
-  opacity: 0.7;
+
+/* --- BOX AVVISO DI STOCK EDITORIALE --- */
+.stock-alert-container {
+  background-color: #f6f3ed; /* Sfondo beige/corda chiarissimo */
+  padding: 2rem;
+  border: 1px solid #e5e0d8;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
 }
 
+.stock-alert-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  color: #800020; /* Un tocco bordeaux discreto */
+  margin: 0 0 0.5rem 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
 
+.stock-alert-desc {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: #555555;
+  font-weight: 300;
+  margin: 0 0 1.5rem 0;
+}
+
+.stock-alert-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #1a1a1a;
+  padding-bottom: 6px;
+}
+
+.stock-alert-form input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #1a1a1a;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  width: 75%;
+}
+
+.stock-alert-form input::placeholder {
+  color: #aaaaaa;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+}
+
+.btn-alert-submit {
+  background: transparent;
+  border: none;
+  color: #1a1a1a;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 0;
+  transition: opacity 0.3s ease;
+}
+
+.btn-alert-submit:hover:not(:disabled) {
+  opacity: 0.6;
+}
+
+.btn-alert-submit:disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+}
