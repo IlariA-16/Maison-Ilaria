@@ -1,0 +1,35 @@
+<div class="contact-container">
+  <h2>Contatta l'Atelier</h2>
+  <p class="contact-subtitle">Richieste private, appuntamenti in atelier o informazioni sugli ordini.</p>
+
+  <form (ngSubmit)="sendMessage()" class="contact-form">
+    <!-- Campo Nome -->
+    <div class="form-group">
+      <label for="name">Nome Completo</label>
+      <input type="text" id="name" [(ngModel)]="formData.name" name="name" placeholder="ILARIA TADDEI" required>
+    </div>
+
+    <!-- Campo Email -->
+    <div class="form-group">
+      <label for="email">Indirizzo Email</label>
+      <input type="email" id="email" [(ngModel)]="formData.email" name="email" placeholder="nome&#64;esempio.com" required>
+      <span class="error-msg" *ngIf="formData.email && !isEmailValid()">Inserisci un indirizzo email valido.</span>
+    </div>
+
+    <!-- Campo Messaggio -->
+    <div class="form-group">
+      <label for="message">Il tuo messaggio</label>
+      <textarea id="message" rows="5" [(ngModel)]="formData.message" name="message" placeholder="Scrivi la tua richiesta (minimo 10 caratteri)..." required></textarea>
+    </div>
+
+    <!-- Il tasto si sblocca solo se i dati passano i controlli in tempo reale -->
+    <button type="submit" class="btn-submit" [disabled]="!isFormValid()">
+      Invia Messaggio
+    </button>
+  </form>
+
+  <!-- Notifica di invio con successo -->
+  <div class="contact-toast" [class.show]="showSuccessNotification">
+    <span>✓</span> Messaggio inviato con successo all'Atelier.
+  </div>
+</div>

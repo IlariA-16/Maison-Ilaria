@@ -1,0 +1,86 @@
+.about-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 5rem 8%;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #faf9f6;
+  color: #1a1a1a;
+}
+
+.manifesto-section {
+  text-align: center;
+  margin-bottom: 8rem;
+}
+
+.manifesto-section span {
+  font-size: 0.75rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #888888;
+  display: block;
+  margin-bottom: 0.8rem;
+}
+
+.manifesto-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+}
+
+/* Griglia asimmetrica di sfilata */
+.editorial-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 6rem;
+  align-items: center;
+  margin-bottom: 10rem;
+}
+
+.editorial-grid.reverse {
+  grid-template-columns: 1fr 1.2fr;
+}
+
+.editorial-image {
+  height: 550px;
+  background-size: cover;
+  background-position: center;
+  background-color: #f0ebe4;
+}
+
+/* Usiamo foto integrate stabili e d'impatto da Unsplash */
+.img-tessuti {
+  background-image: url('https://unsplash.com');
+}
+
+.img-sartoria {
+  background-image: url('https://unsplash.com');
+}
+
+.editorial-text h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+}
+
+.editorial-text p {
+  color: #555555;
+  font-size: 1rem;
+  line-height: 2;
+  font-weight: 300;
+}
+
+@media (max-width: 768px) {
+  .editorial-grid, .editorial-grid.reverse {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    margin-bottom: 5rem;
+  }
+  .editorial-image {
+    height: 350px;
+  }
+  .manifesto-section h2 {
+    font-size: 2.2rem;
+  }
+}

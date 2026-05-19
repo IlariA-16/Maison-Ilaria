@@ -1,0 +1,123 @@
+.contact-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 6rem 4%;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #faf9f6;
+}
+
+.contact-container h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+}
+
+.contact-subtitle {
+  text-align: center;
+  color: #666666;
+  font-size: 0.95rem;
+  font-weight: 300;
+  margin-bottom: 4rem;
+  letter-spacing: 0.5px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.form-group label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 500;
+  color: #1a1a1a;
+}
+
+.form-group input, .form-group textarea {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #cccccc;
+  padding: 0.8rem 0;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  color: #1a1a1a;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+  border-color: #1a1a1a;
+}
+
+.error-msg {
+  font-size: 0.7rem;
+  color: #800020;
+  letter-spacing: 0.5px;
+  margin-top: 0.2rem;
+}
+
+.btn-submit {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  border: 1px solid #1a1a1a;
+  padding: 1.2rem;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.btn-submit:hover:not(:disabled) {
+  background-color: transparent;
+  color: #1a1a1a;
+}
+
+.btn-submit:disabled {
+  background-color: #cccccc;
+  border-color: #cccccc;
+  color: #ffffff;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Toast di successo invio */
+.contact-toast {
+  position: fixed;
+  bottom: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #1a1a1a;
+  color: #faf9f6;
+  padding: 1.2rem 2.5rem;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 9999;
+}
+
+.contact-toast.show {
+  bottom: 4rem;
+}
+
+.contact-toast span {
+  color: #d2cbc4;
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
