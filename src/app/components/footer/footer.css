@@ -1,45 +1,88 @@
 .main-footer {
-  background-color: #000000;
-  color: #ffffff;
-  padding: 3rem 2rem 1rem 2rem;
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-  margin-top: 4rem;
+  background-color: #121212;
+  color: #faf9f6;
+  padding: 6rem 8% 2rem 8%;
+  font-family: 'Montserrat', sans-serif;
+  margin-top: 0; /* Si unisce perfettamente alla Home Page */
+  border-top: 1px solid #e5e0d8;
 }
 
 .footer-content {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  max-width: 1200px;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr; /* Layout asimmetrico moderno */
+  max-width: 1400px;
   margin: 0 auto;
-  gap: 2rem;
-}
-
-.footer-section {
-  flex: 1;
-  min-width: 200px;
+  gap: 4rem;
 }
 
 .footer-section h3 {
-  font-size: 1rem;
-  letter-spacing: 2px;
-  margin-bottom: 1.2rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  letter-spacing: 3px;
+  margin-bottom: 2rem;
   text-transform: uppercase;
 }
 
 .footer-section p {
-  color: #cccccc;
+  color: #a0a0a0;
+  font-size: 0.9rem;
+  line-height: 2;
+  font-weight: 300;
+}
+
+/* Stile per una newsletter elegante e pulita */
+.newsletter-box {
+  margin-top: 1.5rem;
+  display: flex;
+  border-bottom: 1px solid #555555;
+  padding-bottom: 5px;
+}
+
+.newsletter-box input {
+  background: transparent;
+  border: none;
+  color: #faf9f6;
+  font-family: 'Montserrat', sans-serif;
   font-size: 0.85rem;
-  line-height: 1.6;
-  margin: 0.5rem 0;
+  width: 100%;
+  outline: none;
+}
+
+.newsletter-box input::placeholder {
+  color: #555555;
+}
+
+.newsletter-box button {
+  background: transparent;
+  border: none;
+  color: #faf9f6;
+  cursor: pointer;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: opacity 0.3s;
+}
+
+.newsletter-box button:hover {
+  opacity: 0.7;
 }
 
 .footer-bottom {
   text-align: center;
   border-top: 1px solid #222222;
-  margin-top: 3rem;
-  padding-top: 1.5rem;
+  margin-top: 5rem;
+  padding-top: 2rem;
   font-size: 0.75rem;
-  color: #888888;
-  letter-spacing: 1px;
+  color: #666666;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+@media (max-width: 992px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
 }
