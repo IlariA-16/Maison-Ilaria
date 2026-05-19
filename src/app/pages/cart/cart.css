@@ -194,4 +194,41 @@
 .btn-remove:hover {
   color: #1a1a1a;
 }
+/* --- SELETTORE DI QUANTITÀ MINIMALE (+ e -) --- */
+.quantity-selector {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.qty-btn {
+  background: transparent;
+  border: 1px solid #cccccc;
+  color: #1a1a1a;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.qty-btn:hover {
+  border-color: #1a1a1a;
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+.qty-number {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  min-width: 15px;
+  text-align: center;
+}
+
 

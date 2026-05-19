@@ -10,20 +10,29 @@
   <!-- Schermata se ci sono capi da acquistare -->
   <div *ngIf="cartItems.length > 0" class="cart-content">
     
-    <!-- Elenco dei prodotti inseriti con indice di tracciamento -->
+    <!-- Elenco dei prodotti inseriti con selettore quantità -->
     <div class="cart-items-list">
       <div *ngFor="let item of cartItems; let i = index" class="cart-item">
         <div class="item-img-wrapper">
-          <img [src]="item.image" [alt]="item.name">
+          <!-- CORRETTO: Aggiunto .product prima di image e name -->
+          <img [src]="item.product.image" [alt]="item.product.name">
         </div>
         <div class="item-details">
-          <h3>{{ item.name }}</h3>
-          <p class="item-category">{{ item.category }}</p>
+          <!-- CORRETTO: Aggiunto .product prima di name e category -->
+          <h3>{{ item.product.name }}</h3>
+          <p class="item-category">{{ item.product.category }}</p>
           
-          <!-- Pulsante Rimuovi Elegante -->
+          <!-- Selettore Quantità Minimalista (+ e -) -->
+          <div class="quantity-selector">
+            <button (click)="decreaseQty(i)" class="qty-btn">–</button>
+            <span class="qty-number">{{ item.quantity }}</span>
+            <button (click)="increaseQty(i)" class="qty-btn">+</button>
+          </div>
+
           <button (click)="removeItem(i)" class="btn-remove">Rimuovi</button>
         </div>
-        <p class="item-price">{{ item.price | currency:'EUR' }}</p>
+        <!-- CORRETTO: Moltiplica il prezzo del singolo capo per la sua quantità -->
+        <p class="item-price">{{ (item.product.price * item.quantity) | currency:'EUR' }}</p>
       </div>
     </div>
 
