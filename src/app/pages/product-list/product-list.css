@@ -186,4 +186,30 @@
 .filter-bar button.active::after {
   width: 100%;
 }
+/* --- BARRA DI RICERCA EDITORIALE --- */
+.search-container {
+  max-width: 400px;
+  margin: 3rem auto 0 auto;
+  border-bottom: 1px solid #1a1a1a;
+  padding-bottom: 8px;
+}
+
+.search-container input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  text-align: center;
+  color: #1a1a1a;
+  letter-spacing: 1px;
+}
+
+.search-container input::placeholder {
+  color: #aaaaaa;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+}
 
