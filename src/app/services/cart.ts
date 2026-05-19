@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Product } from './product';
 
+
+
 // Definiamo la struttura di un elemento del carrello con la sua quantità
 export interface CartItem {
   product: Product;
