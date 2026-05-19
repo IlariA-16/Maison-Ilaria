@@ -6,6 +6,7 @@ import { Cart } from './pages/cart/cart';
 import { Wishlist } from './pages/wishlist/wishlist';
 import { About } from './pages/about/about';      
 import { Contact } from './pages/contact/contact';
+import { Checkout } from './pages/checkout/checkout';
 
 export const routes: Routes = [
   { path: '', component: Home },
@@ -15,5 +16,6 @@ export const routes: Routes = [
   { path: 'carrello', component: Cart },
   { path: 'chi-siamo', component: About },
   { path: 'contatti', component: Contact }, 
+  { path: 'checkout', component: Checkout },
   { path: '**', redirectTo: '' } // Se l'utente sbaglia indirizzo, torna alla Home
 ];

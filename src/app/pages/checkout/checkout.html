@@ -1,0 +1,90 @@
+<div class="checkout-container">
+  
+  <!-- CONTENUTO PRINCIPALE DEI FORM (Mostrato solo per Step 1 e 2) -->
+  <div class="checkout-main" *ngIf="currentStep < 3">
+    
+    <!-- Indicatore del Progresso -->
+    <div class="step-indicator">
+      <span [class.active]="currentStep === 1">1. Spedizione</span>
+      <span class="step-divider">→</span>
+      <span [class.active]="currentStep === 2">2. Pagamento</span>
+    </div>
+
+    <!-- STEP 1: INDIRIZZO DI SPEDIZIONE -->
+    <div *ngIf="currentStep === 1" class="step-box">
+      <h3>Dati di Spedizione</h3>
+      <form (ngSubmit)="goToPayment()" class="checkout-form">
+        <div class="form-group">
+          <label>Nome e Cognome</label>
+          <input type="text" [(ngModel)]="shippingData.name" name="name" placeholder="Ilaria Taddei" required>
+        </div>
+        <div class="form-group">
+          <label>Indirizzo</label>
+          <input type="text" [(ngModel)]="shippingData.address" name="address" placeholder="Via della Spiga, 12" required>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Città</label>
+            <input type="text" [(ngModel)]="shippingData.city" name="city" placeholder="Milano" required>
+          </div>
+          <div class="form-group">
+            <label>CAP</label>
+            <input type="text" [(ngModel)]="shippingData.cap" name="cap" placeholder="20121" minlength="5" maxlength="5" required>
+        </div>
+        </div>
+        <button type="submit" class="btn-checkout-next" [disabled]="!isShippingValid()">
+          Procedi al Pagamento
+        </button>
+      </form>
+    </div>
+
+    <!-- STEP 2: SIMULAZIONE PAGAMENTO -->
+    <div *ngIf="currentStep === 2" class="step-box">
+      <h3>Dettagli di Pagamento</h3>
+      <form (ngSubmit)="confirmOrder()" class="checkout-form">
+        <div class="form-group">
+          <label>Numero della Carta</label>
+          <input type="text" [(ngModel)]="paymentData.cardNumber" name="cardNumber" placeholder="0000 0000 0000 0000" maxlength="19" required>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Scadenza (MM/AA)</label>
+            <input type="text" [(ngModel)]="paymentData.expiry" name="expiry" placeholder="12/28" maxlength="5" required>
+          </div>
+          <div class="form-group">
+            <label>CVV</label>
+            <input type="password" [(ngModel)]="paymentData.cvv" name="cvv" placeholder="123" maxlength="3" required>
+          </div>
+        </div>
+        
+        <div class="button-actions">
+          <button type="button" (click)="backToShipping()" class="btn-checkout-back">← Indietro</button>
+          <button type="submit" class="btn-checkout-next" [disabled]="!isPaymentValid()">Conferma Ordine</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- PANNELLO RIEPILOGO LATERALE (Mostrato solo per Step 1 e 2) -->
+  <div class="checkout-summary" *ngIf="currentStep < 3">
+    <h3>Il tuo Ordine</h3>
+    <div class="summary-row">
+      <span>Spedizione</span>
+      <span>Gratuita</span>
+    </div>
+    <div class="summary-row total-row">
+      <span>Totale</span>
+      <span>{{ totalAmount | currency:'EUR' }}</span>
+    </div>
+  </div>
+
+  <!-- STEP 3: SCHERMATA ORDINE RICEVUTO (COMPLETATO) -->
+  <div class="success-screen" *ngIf="currentStep === 3">
+    <span class="success-icon">✓</span>
+    <h2>Ordine Ricevuto</h2>
+    <p class="success-subtitle">Grazie per aver scelto Maison Ilaria. La tua richiesta è in fase di elaborazione sartoriale.</p>
+    <p class="success-desc">Un'email di conferma con i dettagli della spedizione è stata inviata al tuo indirizzo.</p>
+    <a routerLink="/prodotti" class="btn-return-shop">Torna alla Collezione</a>
+  </div>
+
+</div>

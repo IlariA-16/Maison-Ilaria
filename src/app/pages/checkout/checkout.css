@@ -1,0 +1,240 @@
+.checkout-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 5rem 4%;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #faf9f6;
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+/* Se siamo alla schermata finale, cambiamo il layout a colonna singola */
+.checkout-container:has(.success-screen) {
+  grid-template-columns: 1fr;
+  max-width: 700px;
+}
+
+.step-indicator {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #aaaaaa;
+}
+
+.step-indicator .active {
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+.step-divider {
+  color: #cccccc;
+}
+
+.step-box h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 400;
+  margin-top: 0;
+  margin-bottom: 2.5rem;
+  letter-spacing: 1px;
+}
+
+.checkout-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.form-group label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #1a1a1a;
+  font-weight: 500;
+}
+
+.form-group input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #cccccc;
+  padding: 0.8rem 0;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  color: #1a1a1a;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+  border-color: #1a1a1a;
+}
+
+/* --- LOGICA PULSANTE OTTIMIZZATA --- */
+.btn-checkout-next {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  border: 1px solid #1a1a1a;
+  padding: 1.2rem;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+  width: 100%; /* Occupa tutto lo spazio della colonna */
+}
+
+.btn-checkout-next:hover:not(:disabled) {
+  background-color: transparent;
+  color: #1a1a1a;
+}
+
+/* Quando il form non è ancora valido: diventa grigio ma con scritta scura leggibile */
+.btn-checkout-next:disabled {
+  background-color: #e5e0d8;
+  border-color: #e5e0d8;
+  color: #888888; /* CORRETTO: Grigio scuro ad alto contrasto */
+  cursor: not-allowed;
+  opacity: 1; /* Rimosso l'effetto trasparenza sbiadito */
+}
+
+.button-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.button-actions .btn-checkout-next {
+  flex: 1;
+  margin-top: 0;
+}
+
+.btn-checkout-back {
+  background: transparent;
+  border: none;
+  color: #666666;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.btn-checkout-back:hover {
+  color: #000000;
+}
+
+/* Box Riepilogo Costi */
+.checkout-summary {
+  background-color: #f6f3ed;
+  padding: 2.5rem;
+  border: 1px solid #e5e0d8;
+}
+
+.checkout-summary h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  margin-top: 0;
+  margin-bottom: 2rem;
+  letter-spacing: 1px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.2rem;
+  font-size: 0.9rem;
+  color: #555555;
+  font-weight: 300;
+}
+
+.total-row {
+  border-top: 1px solid #e5e0d8;
+  padding-top: 1.5rem;
+  margin-top: 1.5rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+/* SCHERMATA DI SUCCESSO FINALE */
+.success-screen {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.success-icon {
+  font-size: 3rem;
+  color: #d2cbc4;
+  display: block;
+  margin-bottom: 2rem;
+}
+
+.success-screen h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.6rem;
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+  letter-spacing: 1px;
+}
+
+.success-subtitle {
+  font-size: 1.05rem;
+  color: #1a1a1a;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+.success-desc {
+  font-size: 0.9rem;
+  color: #666666;
+  font-weight: 300;
+  line-height: 1.6;
+  margin-bottom: 3.5rem;
+}
+
+.btn-return-shop {
+  display: inline-block;
+  padding: 1.2rem 3rem;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  font-weight: 600;
+  transition: opacity 0.3s;
+}
+
+.btn-return-shop:hover {
+  opacity: 0.8;
+}
+
+@media (max-width: 992px) {
+  .checkout-container {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+}

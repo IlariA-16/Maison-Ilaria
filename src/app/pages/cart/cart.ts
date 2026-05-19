@@ -1,7 +1,8 @@
+import { Router } from '@angular/router'; 
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { CartService, CartItem } from '../../services/cart'; // Modificato: importa CartItem insieme al servizio
+import { CartService, CartItem } from '../../services/cart'; 
 
 @Component({
   selector: 'app-cart',
@@ -11,9 +12,9 @@ import { CartService, CartItem } from '../../services/cart'; // Modificato: impo
   styleUrl: './cart.css'
 })
 export class Cart implements OnInit {
-  cartItems: CartItem[] = []; // Modificato: ora è un array di CartItem (prodotto + quantità)
+  cartItems: CartItem[] = []; 
 
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService, private router: Router) {}
 
   ngOnInit(): void {
     // Recuperiamo i prodotti attualmente salvati nel servizio del carrello
@@ -31,21 +32,20 @@ export class Cart implements OnInit {
     this.cartItems = this.cartService.getItems(); // Rilegge i prodotti rimasti
   }
 
-  // NUOVA FUNZIONE: Ordina al servizio di aumentare di 1 unità il prodotto e aggiorna lo schermo
+  // Ordina al servizio di aumentare di 1 unità il prodotto e aggiorna lo schermo
   increaseQty(index: number): void {
     this.cartService.incrementQuantity(index);
     this.cartItems = this.cartService.getItems();
   }
 
-  // NUOVA FUNZIONE: Ordina al servizio di diminuire di 1 unità il prodotto e aggiorna lo schermo
+  // Ordina al servizio di diminuire di 1 unità il prodotto e aggiorna lo schermo
   decreaseQty(index: number): void {
     this.cartService.decrementQuantity(index);
     this.cartItems = this.cartService.getItems();
   }
 
-  // Simula la chiusura dell'ordine
+  // CORRETTO: Naviga direttamente alla pagina di checkout reale senza svuotare anticipatamente i dati
   checkout(): void {
-    alert('Grazie per il tuo acquisto! Il tuo ordine Maison Ilaria è in fase di elaborazione.');
-    this.cartItems = this.cartService.clearCart(); // Svuota il carrello dopo l'acquisto
+    this.router.navigate(['/checkout']); 
   }
 }
