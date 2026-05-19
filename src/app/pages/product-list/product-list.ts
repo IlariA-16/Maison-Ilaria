@@ -1,49 +1,58 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms'; // 1. FONDAMENTALE: Importa FormsModule per gestire la barra di ricerca
+import { FormsModule } from '@angular/forms'; 
 import { ProductService, Product } from '../../services/product';
+import { WishlistService } from '../../services/wishlist'; // 1. Importa il servizio preferiti
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule], // 2. Aggiunto FormsModule qui dentro
+  imports: [CommonModule, RouterModule, FormsModule], 
   templateUrl: './product-list.html',
   styleUrl: './product-list.css'
 })
 export class ProductList implements OnInit {
-  allProducts: Product[] = [];       // Contiene l'intero catalogo fisso
-  filteredProducts: Product[] = [];  // Contiene solo i prodotti visibili a schermo
-  selectedCategory: string = 'Tutti'; // Traccia quale filtro per categoria è attivo
-  searchTerm: string = '';            // 3. Memorizza il testo digitato dall'utente nella barra
+  allProducts: Product[] = [];       
+  filteredProducts: Product[] = [];  
+  selectedCategory: string = 'Tutti'; 
+  searchTerm: string = '';            
 
-  constructor(private productService: ProductService) {}
+  // 2. Inietta il WishlistService nel costruttore di fianco a quello dei prodotti
+  constructor(
+    private productService: ProductService,
+    private wishlistService: WishlistService 
+  ) {}
 
   ngOnInit(): void {
     this.allProducts = this.productService.getProducts();
-    this.filteredProducts = this.allProducts; // All'inizio mostriamo tutto il catalogo
+    this.filteredProducts = this.allProducts; 
   }
 
-  // Si attiva quando l'utente clicca sui bottoni delle categorie
   filterByCategory(category: string): void {
     this.selectedCategory = category;
-    this.applyFilters(); // Esegue il controllo combinato
+    this.applyFilters(); 
   }
 
-  // Si attiva istantaneamente ogni volta che l'utente scrive o cancella una lettera
   onSearchChange(): void {
-    this.applyFilters(); // Esegue il controllo combinato
+    this.applyFilters(); 
   }
 
-  // 4. LOGICA COMBINATA: Filtra contemporaneamente per Categoria E per Nome del vestito
   applyFilters(): void {
     this.filteredProducts = this.allProducts.filter(product => {
-      // Controlla la corrispondenza della categoria selezionata
       const matchCategory = this.selectedCategory === 'Tutti' || product.category === this.selectedCategory;
-      // Controlla se il nome del prodotto contiene le lettere cercate (senza distinzione tra maiuscole e minuscole)
       const matchSearch = product.name.toLowerCase().includes(this.searchTerm.toLowerCase());
-      
       return matchCategory && matchSearch;
     });
+  }
+
+  // 3. NUOVA FUNZIONE: Chiama il servizio per aggiungere o rimuovere il capo dai preferiti
+  toggleFavorite(product: Product): void {
+    this.wishlistService.toggleWishlist(product);
+  }
+
+  // 4. NUOVA FUNZIONE: Controlla se il capo ha il cuoricino attivo per colorarlo nell'HTML
+  isFavorite(productId: number): boolean {
+    return this.wishlistService.isInWishlist(productId);
   }
 }

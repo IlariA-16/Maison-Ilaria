@@ -1,0 +1,28 @@
+<div class="catalog-container">
+  <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; text-align: center; margin-bottom: 3rem; letter-spacing: 2px;">I tuoi Preferiti</h2>
+
+  <!-- Se non ci sono cuoricini -->
+  <div *ngIf="favorites.length === 0" style="text-align: center; padding: 4rem 2rem; color: #666;">
+    <p>Non hai ancora salvato nessun capo nei tuoi preferiti.</p>
+    <a routerLink="/prodotti" style="display: inline-block; margin-top: 1.5rem; padding: 1rem 2rem; background-color: #1a1a1a; color: #fff; text-decoration: none; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px;">Torna alla collezione</a>
+  </div>
+
+  <!-- Se ci sono prodotti con il cuoricino -->
+  <div class="products-grid" *ngIf="favorites.length > 0">
+    <div *ngFor="let product of favorites" class="product-card">
+      
+      <div class="image-wrapper">
+        <img [src]="product.image" [alt]="product.name">
+        <button (click)="removeFavorite(product)" class="wishlist-btn-remove">♥</button>
+      </div>
+
+      <div class="product-info">
+        <span class="category">{{ product.category }}</span>
+        <h3>{{ product.name }}</h3>
+        <p class="price">{{ product.price | currency:'EUR' }}</p>
+        <a [routerLink]="['/prodotto', product.id]" class="btn-view-sheet">Vedi scheda →</a>
+      </div>
+
+    </div>
+  </div>
+</div>

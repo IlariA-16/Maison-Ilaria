@@ -1,15 +1,20 @@
 <header class="main-header">
   <div class="logo">
-    <a routerLink="/">MAISON ILARIA</a>
+    <a routerLink="">MAISON ILARIA</a>
   </div>
   
   <nav class="nav-links">
-    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
-    <a routerLink="/prodotti" routerLinkActive="active">Collezione</a>
+    <a routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+    <a routerLink="prodotti" routerLinkActive="active">Collezione</a>
   </nav>
   
   <div class="cart-icon">
-    <a routerLink="/carrello">
+    <!-- Percorsi relativi senza la barra iniziale / -->
+    <a routerLink="preferiti" style="margin-right: 2rem;">
+      ♥ Preferiti <span class="badge" *ngIf="getWishlistCount() > 0">{{ getWishlistCount() }}</span>
+    </a>
+    
+    <a routerLink="carrello">
       🛒 Carrello <span class="badge" *ngIf="getCartCount() > 0">{{ getCartCount() }}</span>
     </a>
   </div>

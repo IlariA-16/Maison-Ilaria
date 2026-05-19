@@ -62,6 +62,12 @@
   color: #1a1a1a;
 }
 
+/* Aggiornato per allineare sia i Preferiti sia il Carrello */
+.cart-icon {
+  display: flex;
+  align-items: center;
+}
+
 .cart-icon a {
   text-decoration: none;
   color: #1a1a1a;
@@ -71,6 +77,11 @@
   font-weight: 500;
   display: flex;
   align-items: center;
+  transition: opacity 0.3s ease;
+}
+
+.cart-icon a:hover {
+  opacity: 0.7;
 }
 
 .badge {
@@ -91,5 +102,8 @@
   }
   .nav-links a {
     margin: 0 1rem;
+  }
+  .cart-icon {
+    margin-top: 0.5rem;
   }
 }

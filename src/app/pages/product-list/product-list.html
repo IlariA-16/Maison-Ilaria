@@ -27,6 +27,12 @@
     <div *ngFor="let product of filteredProducts" class="product-card">
       <div class="image-wrapper">
         <img [src]="product.image" [alt]="product.name">
+        
+        <!-- Pulsante Cuoricino per la Lista dei Desideri -->
+        <button (click)="toggleFavorite(product)" class="wishlist-btn" [class.liked]="isFavorite(product.id)">
+          ♥
+        </button>
+
         <div class="card-overlay">
           <a [routerLink]="['/prodotto', product.id]" class="btn-view">Vedi Dettaglio</a>
         </div>
