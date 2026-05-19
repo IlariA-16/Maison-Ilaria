@@ -1,1 +1,43 @@
-<p>cart works!</p>
+<div class="cart-container">
+  <h2>Il tuo Ordine</h2>
+
+  <!-- Schermata se il carrello è vuoto -->
+  <div *ngIf="cartItems.length === 0" class="empty-cart">
+    <p>Il tuo carrello è attualmente vuoto.</p>
+    <a routerLink="/prodotti" class="btn-continue">Esplora la collezione</a>
+  </div>
+
+  <!-- Schermata se ci sono capi da acquistare -->
+  <div *ngIf="cartItems.length > 0" class="cart-content">
+    
+    <!-- Elenco dei prodotti inseriti -->
+    <div class="cart-items-list">
+      <div *ngFor="let item of cartItems" class="cart-item">
+        <div class="item-img-wrapper">
+          <img [src]="item.image" [alt]="item.name">
+        </div>
+        <div class="item-details">
+          <h3>{{ item.name }}</h3>
+          <p class="item-category">{{ item.category }}</p>
+        </div>
+        <p class="item-price">{{ item.price | currency:'EUR' }}</p>
+      </div>
+    </div>
+
+    <!-- Pannello del Totale e Checkout -->
+    <div class="cart-summary">
+      <h3>Riepilogo</h3>
+      <div class="summary-row">
+        <span>Spedizione Spedita</span>
+        <span>Gratuita</span>
+      </div>
+      <div class="summary-row total-row">
+        <span>Totale dell'ordine</span>
+        <span>{{ getTotal() | currency:'EUR' }}</span>
+      </div>
+      <button (click)="checkout()" class="btn-checkout">Procedi all'acquisto</button>
+      <a routerLink="/prodotti" class="btn-back-shop">← Continua lo shopping</a>
+    </div>
+
+  </div>
+</div>
