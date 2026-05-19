@@ -31,29 +31,35 @@
   font-weight: 300;
 }
 
-/* Stile per una newsletter elegante e pulita */
+/* --- INTERFACCIA NEWSLETTER AGGIORNATA --- */
 .newsletter-box {
   margin-top: 1.5rem;
+  max-width: 400px;
+}
+
+.newsletter-form {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   border-bottom: 1px solid #555555;
   padding-bottom: 5px;
 }
 
-.newsletter-box input {
+.newsletter-form input {
   background: transparent;
   border: none;
   color: #faf9f6;
   font-family: 'Montserrat', sans-serif;
   font-size: 0.85rem;
-  width: 100%;
+  width: 80%;
   outline: none;
 }
 
-.newsletter-box input::placeholder {
+.newsletter-form input::placeholder {
   color: #555555;
 }
 
-.newsletter-box button {
+.btn-newsletter-submit {
   background: transparent;
   border: none;
   color: #faf9f6;
@@ -63,10 +69,32 @@
   text-transform: uppercase;
   font-weight: 500;
   transition: opacity 0.3s;
+  padding: 0;
 }
 
-.newsletter-box button:hover {
+.btn-newsletter-submit:hover:not(:disabled) {
   opacity: 0.7;
+}
+
+/* Se l'email è incompleta, il pulsante sfuma con classe nativa */
+.btn-newsletter-submit:disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+}
+
+/* Animazione per la scritta di conferma */
+.newsletter-success {
+  color: #faf9f6;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  margin: 1.5rem 0 0 0;
+  font-weight: 400;
+  animation: slideUp 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .footer-bottom {

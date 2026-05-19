@@ -3,15 +3,33 @@
     <div class="footer-section">
       <h3>MAISON ILARIA</h3>
       <p>Un'estetica sartoriale che celebra la purezza delle linee e il rispetto per le risorse del nostro pianeta. Collezioni create per superare le stagioni.</p>
+      
+      <!-- Box della Newsletter Aggiornato -->
       <div class="newsletter-box">
-        <input type="email" placeholder="ISCRIVITI ALLA NEWSLETTER">
-        <button type="button">Invia</button>
+        <!-- Messaggio di iscrizione avvenuta con successo -->
+        <p class="newsletter-success" *ngIf="showNewsletterSuccess">
+          ✓ Iscrizione avvenuta. Benvenuta nel club Maison Ilaria.
+        </p>
+
+        <!-- Form interattivo con controllo in tempo reale -->
+        <form (ngSubmit)="subscribeNewsletter($event)" *ngIf="!showNewsletterSuccess" class="newsletter-form">
+          <input 
+            type="email" 
+            [(ngModel)]="newsletterEmail" 
+            name="newsletterEmail"
+            placeholder="ISCRIVITI ALLA NEWSLETTER" 
+            required>
+          
+          <button type="submit" class="btn-newsletter-submit" [disabled]="!isEmailValid()">
+            INVIA
+          </button>
+        </form>
       </div>
     </div>
     
     <div class="footer-section">
       <h3>Atelier</h3>
-      <p>Email: atelier&#64;maisonilaria.com</p>
+      <p>Email: atelier@maisonilaria.com</p>
       <p>Telefono: +39 02 8765432</p>
       <p>Milano, Italia</p>
     </div>
