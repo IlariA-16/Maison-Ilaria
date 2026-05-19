@@ -1,4 +1,3 @@
-/* Importiamo un font elegante per i titoli (Playfair Display) e uno pulito per i testi */
 @import url('https://googleapis.com');
 
 .home-container {
@@ -8,10 +7,11 @@
   overflow-x: hidden;
 }
 
-/* --- HERO SECTION REINVENTATA --- */
+/* --- HERO SECTION CON IMMAGINE REALE --- */
 .hero-section {
+  /* LOGICA IMMAGINE LOCALE DI SFONDO (Unita al velo scuro trasparente) */
   background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.4)), 
-                    url('https://unsplash.com');
+                    url('../../../assets/hero-bg.jpg');
   background-size: cover;
   background-position: center 30%;
   height: 90vh; /* Più alta, quasi a tutto schermo */
@@ -97,10 +97,10 @@
   font-weight: 300;
 }
 
-/* Immagine di dettaglio affiancata alla filosofia */
+/* Immagine di dettaglio affiancata alla filosofia  */
 .philosophy-image {
   height: 500px;
-  background-image: url('https://unsplash.com');
+  background-image: url('../../../assets/atelier.jpeg'); 
   background-size: cover;
   background-position: center;
   box-shadow: 20px 20px 0px #e5e0d8; /* Dettaglio geometrico chic */
