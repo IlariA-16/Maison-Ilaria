@@ -3,16 +3,21 @@
     <span>Maison Ilaria Archive</span>
     <h2>La Collezione Permanente</h2>
     <p>Linee essenziali, geometrie pure e textures naturali.</p>
+    
+    <!-- Barra dei Filtri Elegante della Maison -->
+    <div class="filter-bar">
+      <button (click)="filterByCategory('Tutti')" [class.active]="selectedCategory === 'Tutti'">Tutti</button>
+      <button (click)="filterByCategory('Donna')" [class.active]="selectedCategory === 'Donna'">Donna</button>
+      <button (click)="filterByCategory('Uomo')" [class.active]="selectedCategory === 'Uomo'">Uomo</button>
+      <button (click)="filterByCategory('Accessori')" [class.active]="selectedCategory === 'Accessori'">Accessori</button>
+    </div>
   </header>
   
-  <!-- Griglia dei Prodotti della Maison -->
+  <!-- Griglia dei Prodotti Filtrati (Aggiornata con filteredProducts) -->
   <div class="products-grid">
-    <div *ngFor="let product of products" class="product-card">
+    <div *ngFor="let product of filteredProducts" class="product-card">
       <div class="image-wrapper">
-        
-        <!-- Tag immagine dinamico che legge i percorsi locali dal product.ts -->
         <img [src]="product.image" [alt]="product.name">
-        
         <div class="card-overlay">
           <a [routerLink]="['/prodotto', product.id]" class="btn-view">Vedi Dettaglio</a>
         </div>

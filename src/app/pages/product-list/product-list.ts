@@ -11,11 +11,25 @@ import { ProductService, Product } from '../../services/product';
   styleUrl: './product-list.css'
 })
 export class ProductList implements OnInit {
-  products: Product[] = [];
+  allProducts: Product[] = [];       // Contiene l'intero catalogo fisso
+  filteredProducts: Product[] = [];  // Contiene solo i prodotti visibili a schermo
+  selectedCategory: string = 'Tutti'; // Traccia quale filtro è attivo in questo momento
 
   constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
-    this.products = this.productService.getProducts();
+    this.allProducts = this.productService.getProducts();
+    this.filteredProducts = this.allProducts; // All'inizio mostriamo tutto il catalogo
+  }
+
+  // Funzione che cambia il filtro in base al bottone cliccato
+  filterByCategory(category: string): void {
+    this.selectedCategory = category;
+    
+    if (category === 'Tutti') {
+      this.filteredProducts = this.allProducts;
+    } else {
+      this.filteredProducts = this.allProducts.filter(p => p.category === category);
+    }
   }
 }

@@ -144,3 +144,46 @@
     height: 400px;
   }
 }
+/* --- BARRA DEI FILTRI EDITORIALE --- */
+.filter-bar {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  margin-top: 3rem;
+  flex-wrap: wrap; /* Evita sovrapposizioni su schermi piccoli */
+}
+
+.filter-bar button {
+  background: transparent;
+  border: none;
+  color: #888888;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  padding-bottom: 6px;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+/* Linea sottile sotto il filtro selezionato */
+.filter-bar button::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: #1a1a1a;
+  transition: width 0.3s ease;
+}
+
+.filter-bar button:hover, .filter-bar button.active {
+  color: #1a1a1a;
+}
+
+.filter-bar button.active::after {
+  width: 100%;
+}
+
