@@ -13,6 +13,11 @@ export class CartService {
     this.cartItems.push(product);
   }
 
+  // NUOVA FUNZIONE: Rimuove un singolo prodotto dal carrello in base alla sua posizione
+  removeFromCart(index: number) {
+    this.cartItems.splice(index, 1);
+  }
+
   // Ritorna la lista degli elementi nel carrello
   getItems(): Product[] {
     return this.cartItems;

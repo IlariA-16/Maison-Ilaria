@@ -26,6 +26,12 @@ export class Cart implements OnInit {
     return this.cartService.getTotalPrice();
   }
 
+  // NUOVA FUNZIONE: Ordina al servizio di rimuovere il capo e aggiorna lo schermo
+  removeItem(index: number): void {
+    this.cartService.removeFromCart(index);
+    this.cartItems = this.cartService.getItems(); // Rilegge i prodotti rimasti
+  }
+
   // Simula la chiusura dell'ordine
   checkout(): void {
     alert('Grazie per il tuo acquisto! Il tuo ordine Maison Ilaria è in fase di elaborazione.');

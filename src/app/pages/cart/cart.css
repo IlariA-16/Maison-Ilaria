@@ -175,3 +175,23 @@
     gap: 3rem;
   }
 }
+/* --- BOTTONE RIMUOVI MINIMALE --- */
+.btn-remove {
+  background: transparent;
+  border: none;
+  color: #888888;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  padding: 0;
+  margin-top: 0.8rem;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.btn-remove:hover {
+  color: #1a1a1a;
+}
+
