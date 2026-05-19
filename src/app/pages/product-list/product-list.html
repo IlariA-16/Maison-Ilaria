@@ -40,7 +40,12 @@
       <div class="product-info">
         <span class="category">{{ product.category }}</span>
         <h3>{{ product.name }}</h3>
-        <p class="price">{{ product.price | currency:'EUR' }}</p>
+        
+        <!-- CORRETTO: Se lo stock è maggiore di 0, mostra il prezzo -->
+        <p class="price" *ngIf="product.stock > 0">{{ product.price | currency:'EUR' }}</p>
+        
+        <!-- CORRETTO: Se lo stock è 0, mostra l'etichetta Esaurito -->
+        <p class="out-of-stock-label" *ngIf="product.stock === 0">Esaurito</p>
       </div>
     </div>
   </div>

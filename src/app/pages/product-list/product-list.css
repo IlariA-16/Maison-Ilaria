@@ -242,5 +242,14 @@
   color: #800020; /* Colore bordeaux d'alta moda */
   background: #faf9f6;
 }
+.out-of-stock-label {
+  font-size: 0.85rem;
+  color: #888888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
+  margin: 0;
+}
+
 
 

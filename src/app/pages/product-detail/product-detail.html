@@ -34,9 +34,12 @@
       <p style="font-size: 0.9rem; color: #555555; margin-bottom: 2rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 500;">Taglia Unica (One Size)</p>
     </div>
 
-    <!-- Bottone di Acquisto -->
-    <button (click)="addToCart()" class="btn-add-cart">
-      Aggiungi al Carrello
+    <!-- Bottone di Acquisto (CORRETTO: Si blocca e cambia testo se lo stock è zero) -->
+    <button 
+      (click)="addToCart()" 
+      class="btn-add-cart" 
+      [disabled]="product.stock === 0">
+      {{ product.stock > 0 ? 'Aggiungi al Carrello' : 'Prodotto Esaurito' }}
     </button>
     
     <a routerLink="/prodotti" class="btn-back">← Torna alla collezione</a>
